@@ -1,0 +1,54 @@
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: mdscuda in /homes/jaredcbothwell/.local/lib/python3.9/site-packages (0.1.3)
+Requirement already satisfied: scipy>=1.6.0 in /homes/jaredcbothwell/.local/lib/python3.9/site-packages (from mdscuda) (1.9.3)
+Requirement already satisfied: numba>=0.51.0 in /homes/jaredcbothwell/.local/lib/python3.9/site-packages (from mdscuda) (0.56.4)
+Requirement already satisfied: numpy>=1.19.0 in /homes/jaredcbothwell/.local/lib/python3.9/site-packages (from mdscuda) (1.23.4)
+Requirement already satisfied: llvmlite<0.40,>=0.39.0dev0 in /homes/jaredcbothwell/.local/lib/python3.9/site-packages (from numba>=0.51.0->mdscuda) (0.39.1)
+Requirement already satisfied: setuptools in /opt/software/software/Python/3.9.5-GCCcore-10.3.0/lib/python3.9/site-packages (from numba>=0.51.0->mdscuda) (56.2.0)
+WARNING: You are using pip version 21.1.1; however, version 22.3.1 is available.
+You should consider upgrading via the '/opt/software/software/Python/3.9.5-GCCcore-10.3.0/bin/python3.9 -m pip install --upgrade pip' command.
+Traceback (most recent call last):
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 247, in ensure_initialized
+    self.cuInit(0)
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 320, in safe_cuda_api_call
+    self._check_ctypes_error(fname, retcode)
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 388, in _check_ctypes_error
+    raise CudaAPIError(retcode, msg)
+numba.cuda.cudadrv.driver.CudaAPIError: [100] Call to cuInit results in CUDA_ERROR_NO_DEVICE
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/homes/jaredcbothwell/CIS625-MDS/jared/cuda.py", line 3, in <module>
+    from mdscuda import MDS, minkowski_pairs
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/mdscuda/__init__.py", line 1, in <module>
+    from mdscuda.mds import MDS, mds_fit
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/mdscuda/mds.py", line 8, in <module>
+    from mdscuda.utils import bits, np_type, idx, euclidean_pairs_gpu
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/mdscuda/utils.py", line 24, in <module>
+    def euclidean_pairs_gpu(x, d):
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/decorators.py", line 115, in _jit
+    disp.compile(argtypes)
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/dispatcher.py", line 794, in compile
+    kernel = _Kernel(self.py_func, argtypes, **self.targetoptions)
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/core/compiler_lock.py", line 35, in _acquire_compile_lock
+    return func(*args, **kwargs)
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/dispatcher.py", line 94, in __init__
+    self.cooperative = 'cudaCGGetIntrinsicHandle' in lib.get_asm_str()
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/codegen.py", line 110, in get_asm_str
+    return self._join_ptxes(self._get_ptxes(cc=cc))
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/codegen.py", line 114, in _get_ptxes
+    ctx = devices.get_context()
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/devices.py", line 220, in get_context
+    return _runtime.get_or_create_context(devnum)
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/devices.py", line 138, in get_or_create_context
+    return self._get_or_create_context_uncached(devnum)
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/devices.py", line 153, in _get_or_create_context_uncached
+    with driver.get_active_context() as ac:
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 488, in __enter__
+    driver.cuCtxGetCurrent(byref(hctx))
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 285, in __getattr__
+    self.ensure_initialized()
+  File "/homes/jaredcbothwell/virtualenvs/cuda/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 251, in ensure_initialized
+    raise CudaSupportError(f"Error at driver init: {description}")
+numba.cuda.cudadrv.error.CudaSupportError: Error at driver init: Call to cuInit results in CUDA_ERROR_NO_DEVICE (100)

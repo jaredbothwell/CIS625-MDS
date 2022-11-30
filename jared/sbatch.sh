@@ -4,6 +4,7 @@
 #SBATCH --time=00:30:00
 #SBATCH --constraint=warlocks
 
+# module load Python/3.10.4-GCCcore-11.3.0
 module load Python/3.9.5-GCCcore-10.3.0
 # module load Python/3.6.4-foss-2018a
 source  /homes/jaredcbothwell/virtualenvs/venv/bin/activate
